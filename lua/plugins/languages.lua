@@ -196,23 +196,4 @@ return {
       dap = { justMyCode = false },
     },
   },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
-    dependencies = {
-      { "github/copilot.vim" },
-      { "nvim-lua/plenary.nvim" },
-    },
-    event = "VeryLazy",
-    opts = {
-      window = {
-        layout = "float",
-      },
-    },
-    keys = {
-      { "<leader>cc", "<cmd>CopilotChatOpen<cr>", desc = "Open CopilotChat" },
-      { "<leader>ce", "<cmd>CopilotChatExplain<cr>", desc = "Explain code" },
-      { "<leader>cg", "<cmd>CopilotChatGenerate<cr>", desc = "Generate code" },
-    },
-  },
 }
