@@ -26,7 +26,7 @@ return {
     "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
-        "ocamllsp",
+        "ocaml-lsp",
         "rust-analyzer",
         "haskell-language-server",
         "clangd",
