@@ -197,11 +197,21 @@ return {
     },
   },
   {
-    "CopilotCZN/CopilotChat.vim",
+    "olimorris/copilotchat.nvim",
+    branch = "main",
     event = "VeryLazy",
-    config = function()
-      vim.g.copilot_chat_mapping = '<leader>cc'
-      vim.g.copilot_chat_window_layout = 'float'
-    end,
+    opts = {
+      mapping = {
+        open = '<leader>cc',
+      },
+      window = {
+        layout = 'float',
+      },
+    },
+    keys = {
+      { '<leader>cc', '<cmd>CopilotChatOpen<cr>', desc = 'Open CopilotChat' },
+      { '<leader>ce', '<cmd>CopilotChatExplain<cr>', desc = 'Explain code' },
+      { '<leader>cg', '<cmd>CopilotChatGenerate<cr>', desc = 'Generate code' },
+    },
   },
 }
