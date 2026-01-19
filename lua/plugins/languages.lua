@@ -7,6 +7,7 @@ return {
         rust_analyzer = {},
         hls = {},
         clangd = {},
+        pyright = {},
       },
     },
   },
@@ -19,6 +20,7 @@ return {
         "rust",
         "haskell",
         "c",
+        "python",
       },
     },
   },
@@ -30,6 +32,8 @@ return {
         "rust-analyzer",
         "haskell-language-server",
         "clangd",
+        "pyright",
+        "debugpy",
         "codelldb",
         "lua-language-server",
         "shellcheck",
@@ -177,5 +181,13 @@ return {
     ft = { "c", "cpp" },
     dependencies = { "nvim-neotest/neotest" },
     opts = {},
+  },
+  {
+    "nvim-neotest/neotest-python",
+    ft = { "python" },
+    dependencies = { "nvim-neotest/neotest" },
+    opts = {
+      dap = { justMyCode = false },
+    },
   },
 }
