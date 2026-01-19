@@ -67,12 +67,6 @@ return {
           },
         },
       },
-      dap = {
-        adapter = require("rustaceanvim.config").get_codelldb_adapter(
-          vim.fn.exepath("codelldb"),
-          "$MASON/opt/lldb/lib/liblldb.so"
-        ),
-      },
     },
     config = function(_, opts)
       vim.g.rustaceanvim = vim.tbl_deep_extend("keep", vim.g.rustaceanvim or {}, opts or {})
@@ -127,9 +121,6 @@ return {
     },
     config = function()
       vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
-      if LazyVim.has("mason-nvim-dap.nvim") then
-        require("mason-nvim-dap").setup(LazyVim.opts("mason-nvim-dap.nvim"))
-      end
     end,
   },
   {
