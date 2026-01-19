@@ -37,6 +37,9 @@ return {
         "pyright",
         "debugpy",
         "elm-language-server",
+        "black",
+        "ruff",
+        "mypy",
         "codelldb",
         "lua-language-server",
         "shellcheck",
@@ -192,5 +195,13 @@ return {
     opts = {
       dap = { justMyCode = false },
     },
+  },
+  {
+    "CopilotCZN/CopilotChat.vim",
+    event = "VeryLazy",
+    config = function()
+      vim.g.copilot_chat_mapping = '<leader>cc'
+      vim.g.copilot_chat_window_layout = 'float'
+    end,
   },
 }
