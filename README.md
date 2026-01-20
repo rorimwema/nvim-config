@@ -2,9 +2,8 @@
 
 Personal Neovim configuration powered by [LazyVim](https://github.com/LazyVim/LazyVim).
 
-## Features
+## Languages
 
-### Languages
 | Language | LSP | Formatter | Linter | Testing |
 |----------|-----|-----------|--------|---------|
 | Python | pyright | black | ruff, mypy | neotest-python |
@@ -14,49 +13,62 @@ Personal Neovim configuration powered by [LazyVim](https://github.com/LazyVim/La
 | C/C++ | clangd | clang-format | - | neotest-ctest |
 | Elm | elmls | elm-format | - | - |
 
-### Development Tools
-- **Debugging**: nvim-dap with UI, virtual text
-- **AI Coding**: CopilotChat (`:CopilotChat`)
-- **Testing**: neotest with adapters for Python, Rust, Haskell, C/C++
-- **Productivity**: crates.nvim for Rust dependencies
+## Tools
 
-### Keybindings
+### Debugging (nvim-dap)
+- `db` - Toggle breakpoint
+- `dB` - Conditional breakpoint
+- `dc` - Continue/run
+- `di` - Step into
+- `do` - Step out
+- `dO` - Step over
+- `dr` - Toggle REPL
+- `dw` - Widgets/hover
+- `dC` - Run to cursor
 
-| Key | Description |
-|-----|-------------|
-| `<leader>cc` | Open CopilotChat |
-| `<leader>cR` | Rust code actions |
-| `<leader>dr` | Rust debuggables |
-| `d*` | DAP commands (db, dc, di, do, etc.) |
-| `t*` | Test commands (tt, tr, ts, td, etc.) |
+### Testing (neotest)
+- `tt` - Run file tests
+- `tT` - Run all tests
+- `tr` - Run nearest test
+- `ts` - Toggle summary
+- `to` - Show output
+- `td` - Debug nearest test
+
+### Rust
+- `<leader>cR` - Code actions
+- `<leader>dr` - Debuggables
 
 ## Installation
 
-Clone and use as your neovim config:
-
 ```bash
 git clone https://github.com/rorimwema/nvim-config.git ~/.config/nvim
+nvim  # Lazy will auto-install plugins
 ```
 
-On first launch, lazy will auto-install all plugins.
+## Structure
 
-## How It Works
-
-- **lua/config/lazy.lua** - Plugin manager bootstrap
-- **lua/plugins/** - Plugin specifications
-- **lua/config/** - Core configuration (options, keymaps, autocmds)
-- **lazy-lock.json** - Pinned plugin versions
-
-Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim). Configuration follows LazyVim patterns with custom overrides in `lua/plugins/`.
+| Path | Purpose |
+|------|---------|
+| `lua/config/lazy.lua` | Plugin manager bootstrap |
+| `lua/plugins/languages.lua` | Language servers, tools, testing |
+| `lua/plugins/colorscheme.lua` | Colorscheme configuration |
+| `lua/config/` | Core options, keymaps, autocmds |
+| `lazy-lock.json` | Pinned plugin versions |
 
 ## AI/ML Workflow
 
 For GraphRAG, PyTorch GNN, and AI development:
 
-1. **Debugging PyTorch tensors**: Use `d*` keybindings to debug with nvim-dap
-2. **Running tests**: Use `t*` keybindings with neotest
-3. **AI assistance**: Use `<leader>cc` for CopilotChat conversations
+1. **Debug PyTorch tensors**: Use `d*` keybindings with nvim-dap
+2. **Run tests**: Use `t*` keybindings with neotest
+3. **Virtual environments**: Activate in terminal before opening nvim
 
-## Python Virtual Environments
+## Mason Tools Installed
 
-For ML projects, ensure your virtual environment is activated in the terminal before opening neovim, or set `python3.path` in your lspconfig.
+```
+LSP: ocamllsp, rust-analyzer, hls, clangd, pyright, elmls
+Formatter: black, ruff, rustfmt, ocamlformat, clang-format, elm-format
+Linter: ruff, mypy, shellcheck, hlint
+Debug: debugpy, codelldb
+Other: lua-language-server
+```
