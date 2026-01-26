@@ -10,6 +10,7 @@ return {
         pyright = {},
         elmls = {},
         tinymist = {},
+        ty = {},
       },
     },
   },
@@ -46,6 +47,27 @@ return {
         "codelldb",
         "lua-language-server",
         "shellcheck",
+      },
+    },
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        ocaml = { "ocamlformat" },
+      },
+
+      formatters = {
+        ocamlformat = {
+          prepend_args = {
+            "--if-then-else",
+            "vertical",
+            "--break-cases",
+            "fit-or-vertical",
+            "--type-decl",
+            "sparse",
+          },
+        },
       },
     },
   },
@@ -122,15 +144,69 @@ return {
       },
     },
     keys = {
-      { "dB", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, desc = "Breakpoint Condition" },
-      { "db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
-      { "dc", function() require("dap").continue() end, desc = "Run/Continue" },
-      { "dC", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
-      { "di", function() require("dap").step_into() end, desc = "Step Into" },
-      { "do", function() require("dap").step_out() end, desc = "Step Out" },
-      { "dO", function() require("dap").step_over() end, desc = "Step Over" },
-      { "dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
-      { "dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
+      {
+        "dB",
+        function()
+          require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+        end,
+        desc = "Breakpoint Condition",
+      },
+      {
+        "db",
+        function()
+          require("dap").toggle_breakpoint()
+        end,
+        desc = "Toggle Breakpoint",
+      },
+      {
+        "dc",
+        function()
+          require("dap").continue()
+        end,
+        desc = "Run/Continue",
+      },
+      {
+        "dC",
+        function()
+          require("dap").run_to_cursor()
+        end,
+        desc = "Run to Cursor",
+      },
+      {
+        "di",
+        function()
+          require("dap").step_into()
+        end,
+        desc = "Step Into",
+      },
+      {
+        "do",
+        function()
+          require("dap").step_out()
+        end,
+        desc = "Step Out",
+      },
+      {
+        "dO",
+        function()
+          require("dap").step_over()
+        end,
+        desc = "Step Over",
+      },
+      {
+        "dr",
+        function()
+          require("dap").repl.toggle()
+        end,
+        desc = "Toggle REPL",
+      },
+      {
+        "dw",
+        function()
+          require("dap.ui.widgets").hover()
+        end,
+        desc = "Widgets",
+      },
     },
     config = function()
       vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
@@ -163,12 +239,48 @@ return {
     },
     keys = {
       { "t", "", desc = "+test" },
-      { "tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File (Neotest)" },
-      { "tT", function() require("neotest").run.run(vim.uv.cwd()) end, desc = "Run All (Neotest)" },
-      { "tr", function() require("neotest").run.run() end, desc = "Run Nearest (Neotest)" },
-      { "ts", function() require("neotest").summary.toggle() end, desc = "Toggle Summary (Neotest)" },
-      { "to", function() require("neotest").output.open({ enter = true, auto_close = true }) end, desc = "Show Output (Neotest)" },
-      { "td", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "Debug Nearest" },
+      {
+        "tt",
+        function()
+          require("neotest").run.run(vim.fn.expand("%"))
+        end,
+        desc = "Run File (Neotest)",
+      },
+      {
+        "tT",
+        function()
+          require("neotest").run.run(vim.uv.cwd())
+        end,
+        desc = "Run All (Neotest)",
+      },
+      {
+        "tr",
+        function()
+          require("neotest").run.run()
+        end,
+        desc = "Run Nearest (Neotest)",
+      },
+      {
+        "ts",
+        function()
+          require("neotest").summary.toggle()
+        end,
+        desc = "Toggle Summary (Neotest)",
+      },
+      {
+        "to",
+        function()
+          require("neotest").output.open({ enter = true, auto_close = true })
+        end,
+        desc = "Show Output (Neotest)",
+      },
+      {
+        "td",
+        function()
+          require("neotest").run.run({ strategy = "dap" })
+        end,
+        desc = "Debug Nearest",
+      },
     },
   },
   {
